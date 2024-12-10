@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DodgeGame.MainPage"
+             Title="Dodge Game"
+             xmlns:viewmodel="clr-namespace:DodgeGame"
+             x:DataType="viewmodel:Player">
+
+    <VerticalStackLayout>
+        <AbsoluteLayout x:Name="GameLayout" WidthRequest="800" HeightRequest="300" BackgroundColor="DimGrey">
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+        <Button x:Name="StartButton" WidthRequest="150" HeightRequest="60" Text="Start Game" Clicked="Start_Button_Clicked" IsVisible="{Binding EnableButton}" ZIndex="10"/>
+        <Grid x:Name="ControlsGrid" IsVisible="{Binding Allowmoves}" WidthRequest="150" HeightRequest="60" ColumnDefinitions="*,*,*" RowDefinitions="*,*" HorizontalOptions="Center">
+            <Button FontFamily="FontAwesome" Text="&#xf060;" WidthRequest="50" HeightRequest="60"  Grid.RowSpan="2" Command="{Binding MoveCommand}" CommandParameter="0"/>
+            <Button FontFamily="FontAwesome" Text="&#xf062;" WidthRequest="50" HeightRequest="30" Grid.Row="0" Grid.Column="1" Command="{Binding MoveCommand}" CommandParameter="1"/>
+            <Button FontFamily="FontAwesome" Text="&#xf063;" WidthRequest="50" HeightRequest="30" Grid.Row="1" Grid.Column="1" Command="{Binding MoveCommand}" CommandParameter="2"/>
+            <Button FontFamily="FontAwesome" Text="&#xf061;" WidthRequest="50" HeightRequest="60" Grid.Column="2" Grid.RowSpan="2" Command="{Binding MoveCommand}" CommandParameter="3"/>
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>
